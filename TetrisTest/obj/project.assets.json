@@ -1645,7 +1645,7 @@
           "bin/placeholder/WPFTetris.dll": {}
         },
         "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
+          "Microsoft.WindowsDesktop.App"
         ]
       }
     }
@@ -5751,7 +5751,7 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
-          "Microsoft.WindowsDesktop.App.WPF": {
+          "Microsoft.WindowsDesktop.App": {
             "privateAssets": "none"
           }
         },

@@ -13,8 +13,8 @@ namespace WPFTetris.Model
         public int[,] Table { get; set; }
         public TetrisPiece CurrentPiece { get; set; }
         public bool GameActive { get; set; }
-        public EventHandler UpdateTable;
-        public EventHandler GameOver;
+        public event EventHandler UpdateTable;
+        public event EventHandler GameOver;
         #region Game Controls
         public void NewGame(int size)
         {
