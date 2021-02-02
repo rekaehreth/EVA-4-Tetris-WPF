@@ -35,7 +35,6 @@ namespace WPFTetris
             model = new TetrisModel();
             viewModel = new TetrisViewModel();
             view = new TetrisView() { DataContext = viewModel };
-            view.SizeChanged += View_SizeChanged;
 
             timer = new System.Windows.Threading.DispatcherTimer();
             timer.Tick += Timer_Tick;
@@ -53,19 +52,10 @@ namespace WPFTetris
             view.Show();
         }
 
-        private void View_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if( model.Size != 0 )
-            {
-                viewModel.FieldSize = (int)Math.Min((view.Height / 16), (view.Width / model.Size));
-            }
-        }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             model.MovePieceDown();
         }
-
         private void ViewModel_PauseGame(object sender, EventArgs e)
         {
             model.PauseGame();
@@ -83,7 +73,6 @@ namespace WPFTetris
                 korobeiniki.PlayLooping();
             }
         }
-
         private async void ViewModel_LoadGame(object sender, EventArgs e)
         {
             model.PauseGame();
@@ -120,7 +109,6 @@ namespace WPFTetris
                 korobeiniki.PlayLooping();
             }
         }
-
         private async void ViewModel_SaveGame(object sender, EventArgs e)
         {
             //System.Windows.Forms.
@@ -167,7 +155,8 @@ namespace WPFTetris
             viewModel.InitBoard(size);
             viewModel.UpdateTable(model.Size, model.Table, model.CurrentPiece.Coordinates);
             timer.Start();
-            korobeiniki = new SoundPlayer(@"Resources\Korobeiniki.wav");
+            startTime = DateTime.Now;
+            korobeiniki = new SoundPlayer(@"..\Resources\Korobeiniki.wav");
             // **TODO** Resource folder might not be in the right place
             korobeiniki.PlayLooping();
         }

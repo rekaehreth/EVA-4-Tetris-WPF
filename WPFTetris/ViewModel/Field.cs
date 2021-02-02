@@ -2,14 +2,12 @@
 
 namespace WPFTetris.ViewModel
 {
-    internal class Field
+    public class Field
     {
         public string Color { get; set; }
-        public int Size { get; set; }
-        public Field(string color, int size)
+        public Field(string color)
         {
             Color = color;
-            Size = size;
         }
     }
 }

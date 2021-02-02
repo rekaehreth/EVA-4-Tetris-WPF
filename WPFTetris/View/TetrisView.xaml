@@ -24,12 +24,12 @@
         <ItemsControl ItemsSource ="{Binding PlayingArea}" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid/>
+                    <UniformGrid Rows="16" Columns="{Binding Size, UpdateSourceTrigger=PropertyChanged}" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Rectangle Width="{Binding FieldSize}" Height="{Binding FieldSize, UpdateSourceTrigger=PropertyChanged}" Fill="{Binding Color}"/>
+                    <Button Background="{Binding Color}" Focusable="False"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
