@@ -67,6 +67,7 @@ namespace WPFTetris.Persistence
                     CurrentPiece.Coordinates.Add((Int32.Parse(currentPieceData[2 * (coordinate + 1)]), Int32.Parse(currentPieceData[ 2 * (coordinate + 1) + 1]))); 
                 }
                 // reading table lines
+                Table = new int[16, Size];
                 for(int line = 0; line < 16; ++ line)
                 {
                     string[] TableLineData = (await loader.ReadLineAsync()).Split(' ');

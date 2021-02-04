@@ -57,6 +57,7 @@ namespace WPFTetris.ViewModel
         }
         public void InitBoard(int size)
         {
+            PlayingArea = new ObservableCollection<Field>();
             Size = size;
             for (int row = 0; row < 16; ++row)
             {

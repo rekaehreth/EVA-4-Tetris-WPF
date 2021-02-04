@@ -21,7 +21,7 @@
             <MenuItem Name="LoadGameMenuItem" Header="Load" Command="{Binding Load}"/>
             <MenuItem Name="PauseMenuItem" Header="Pause" />
         </Menu>
-        <ItemsControl ItemsSource ="{Binding PlayingArea}" Grid.Row="1">
+        <ItemsControl ItemsSource ="{Binding PlayingArea, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="16" Columns="{Binding Size, UpdateSourceTrigger=PropertyChanged}" />
