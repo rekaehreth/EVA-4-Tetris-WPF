@@ -85,9 +85,9 @@ namespace WPFTetris
             {
                 string path = fileDialog.FileName;
                 await model.LoadGameAsync(path);
+                viewModel.InitBoard(model.Size);
                 if (MessageBox.Show("Game Loaded\nPress OK to continue", "Game Loaded", MessageBoxButton.OK) == MessageBoxResult.OK)
                 {
-                    viewModel.InitBoard(model.Size);
                     Model_UpdateTable(null, null);
                     model.ContinueGame();
                     timer.Start();
