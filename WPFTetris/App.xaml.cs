@@ -87,14 +87,16 @@ namespace WPFTetris
                 await model.LoadGameAsync(path);
                 if (MessageBox.Show("Game Loaded\nPress OK to continue", "Game Loaded", MessageBoxButton.OK) == MessageBoxResult.OK)
                 {
+                    viewModel.InitBoard(model.Size);
+                    Model_UpdateTable(null, null);
                     model.ContinueGame();
                     timer.Start();
                     if (korobeiniki == null)
                     {
                         korobeiniki = new SoundPlayer(@"..\Resources\Korobeiniki.wav");
-                        // **TODO** Resource folder might not be in the right place
                     }
                     korobeiniki.PlayLooping();
+                    return;
                 }
             }
             if (MessageBox.Show("Game Paused\nPress OK to continue", "Game Paused", MessageBoxButton.OK) == MessageBoxResult.OK)
@@ -104,14 +106,12 @@ namespace WPFTetris
                 if (korobeiniki == null)
                 {
                     korobeiniki = new SoundPlayer(@"..\Resources\Korobeiniki.wav");
-                    // **TODO** Resource folder might not be in the right place
                 }
                 korobeiniki.PlayLooping();
             }
         }
         private async void ViewModel_SaveGame(object sender, EventArgs e)
         {
-            //System.Windows.Forms.
             model.PauseGame();
             timer.Stop();
             korobeiniki?.Stop();
@@ -129,7 +129,6 @@ namespace WPFTetris
                     if (korobeiniki == null)
                     {
                         korobeiniki = new SoundPlayer(@"..\Resources\Korobeiniki.wav");
-                        // **TODO** Resource folder might not be in the right place
                     }
                     korobeiniki?.PlayLooping();
                     return;
@@ -142,7 +141,6 @@ namespace WPFTetris
                 if (korobeiniki == null)
                 {
                     korobeiniki = new SoundPlayer(@"..\Resources\Korobeiniki.wav");
-                    // **TODO** Resource folder might not be in the right place
                 }
                 korobeiniki?.PlayLooping();
                 return;
@@ -157,7 +155,6 @@ namespace WPFTetris
             timer.Start();
             startTime = DateTime.Now;
             korobeiniki = new SoundPlayer(@"..\Resources\Korobeiniki.wav");
-            // **TODO** Resource folder might not be in the right place
             korobeiniki.PlayLooping();
         }
 
